@@ -25,9 +25,10 @@ const navToPizza = (e) => {
         src={Pizza}
         alt=""
       />
+      <span className="message">
       <h2 className="imgText">Your favorite food, delivered while coding</h2>
       <button className="md-button shop-button" onClick={navToPizza}>Pizza?</button>
-      <h1>Pizza</h1>
+      </span>
 
       {/* <button className="md-button shop-button" onClick={navToShop}>
         Shop now!

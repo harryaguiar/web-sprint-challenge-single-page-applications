@@ -37,10 +37,18 @@
   }
 
   .shop-button.md-button {
-    margin-top: -10%;
+    margin-top: -15%;
     margin-left: 45% ;
     width: 115px;
   }
+
+  .message{
+        color: white;
+        margin-top: -10%;
+        margin-left: 45% ;
+        width: 115px;
+      }
+
   
   .imgText {
     position: relative;
