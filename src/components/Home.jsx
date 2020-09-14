@@ -10,10 +10,10 @@ const history = useHistory();
 console.log("history: ", history);
 
 const navToPizza = (e) => {
-    console.log("moving to shop");
+    console.log("moving to menu");
     setTimeout(() => {
       history.push("/pizza");
-      console.log("sent to shop");
+      console.log("sent to menu");
     }, 2000);
   };
 

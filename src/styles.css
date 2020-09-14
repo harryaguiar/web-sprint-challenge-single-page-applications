@@ -23,7 +23,7 @@
   
   .nav-links a {
     text-decoration: none;
-    color: #1c5d76;
+    color: #ffffff;
     font-weight: bold;
     margin-right: 8px;
   }
@@ -32,9 +32,6 @@
     margin-right: 0;
   }
   
-  .nav-links a.active {
-    border-bottom: 1px solid #1c5d76;
-  }
 
   .shop-button.md-button {
     margin-top: -15%;
@@ -45,7 +42,7 @@
   .message{
         color: white;
         margin-top: -10%;
-        margin-left: 45% ;
+        margin-left: auto ;
         width: 115px;
       }
 
@@ -156,3 +153,103 @@
   .md-button:disabled::after {
     opacity: 0;
   }
+
+body {
+  background: #96941d;
+
+}
+
+nav{
+    background: #1c5d76;
+    color: white;
+}
+
+img {
+    width: 100%;
+}
+
+form {
+    text-align: left;
+    background: #1c5d76;
+    width: 50%;
+    margin: auto;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.toppings {
+    display: flex;
+    flex-direction: column;
+    background: #349ca349;
+    width: 100%;
+    margin: 5px auto;
+    text-align: left;
+    line-height: 2rem;
+}
+
+form h2{
+    text-align: center;
+    font-size: 2em;
+    padding: 10px;
+    background: #1c5d76;
+    color: white;
+}
+
+form h4{
+    background: #04282b8e;
+    width: 95%;
+    margin: 10px auto;
+    padding: 5px;
+    text-align: left;
+    line-height: 2rem;
+    border-radius: 10px;
+}
+
+.sauceCard{
+    background: #349ca349;
+    padding: 5px;
+    margin: 10px auto;
+}
+.sauce{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.size{
+    background: #349ca349;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+select, textarea, input{
+    margin-left: 10px;
+}
+
+textarea {
+    width: 90%;
+    height: 60px;
+}
+
+.quantityCard{
+    background: #349ca349;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+.instructionCard{
+    background: #349ca349;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+.substituteCard{
+    background: #349ca349;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+form button{
+    margin: auto;
+}
