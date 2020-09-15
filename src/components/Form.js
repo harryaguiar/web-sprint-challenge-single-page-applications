@@ -14,7 +14,7 @@ const formSchema = yup.object().shape({
     address: yup.string().required("Please leave an address."),
     size: yup.string().required("Must pick your pizza size"),
     pepperoni: yup.boolean(),
-    sauce: yup.boolean().oneOf([true], "Please choose a sauce"),
+    sauce: yup.string(),
     sausage: yup.boolean(),
     canadianBacon: yup.boolean(),
     spicySausage: yup.boolean(),
@@ -40,7 +40,7 @@ const formSchema = yup.object().shape({
     address: "",
     email: "",
     size:"",
-    sauce:"",
+    sauce:false,
     pepperoni: false,
     sausage: false,
     canadianBacon: false,
@@ -70,7 +70,7 @@ const formSchema = yup.object().shape({
     email: "",
     address: '',
     size:"",
-    sauce:"",
+    sauce: "",
     pepperoni: "",
     sausage: "",
     canadianBacon: "",
@@ -85,11 +85,11 @@ const formSchema = yup.object().shape({
     threeCheese: "",
     pineapple: "",
     extraCheese: "", 
-
-    substitute: "",
     instructions: "",
     quantity: "",
   });
+
+  console.log("Error state", errorState)
 
   // onChange function
   const inputChange = e => {
@@ -99,6 +99,7 @@ const formSchema = yup.object().shape({
     let value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setFormState({ ...formState, [e.target.name]: value });
+    console.log(formState)
   };
 
 
@@ -132,8 +133,9 @@ const formSchema = yup.object().shape({
         });
     axios
       .post("https://reqres.in/api/users", formState)
-      .then((response) => {console.log(response);
+      .then((response) => {
         setPostedData(response.data);
+
     })
       .catch(err => console.log(err));
 
@@ -161,6 +163,10 @@ const formSchema = yup.object().shape({
       })
       .catch(err => {
         setErrorState({...errorState, [e.target.name]: err.errors[0]});
+        console.log('no erro');
+        if (!errorState) {
+            setButtonDisabled(false)
+        }
       });
   };
 
@@ -266,22 +272,24 @@ const formSchema = yup.object().shape({
     <div className="toppings">
     
     <h4 id="toppings">Choose your toppings</h4>
-
-    <label htmlFor="pepperoni">
-        <input
+    
+    <label htmlFor="pepperoni">  
+    <input
           type="checkbox"
           id="terms"
           name="pepperoni"
-          checked={formState.pepperoni}
+          value={formState.pepperoni}
           onChange={inputChange}
         />
+      
       Pepperoni</label>
-      <label htmlFor="sausage">
+      
+    <label htmlFor="sausage">
         <input
           type="checkbox"
           id="terms"
           name="sausage"
-          checked={formState.sausage}
+          value={formState.sausage}
           onChange={inputChange}
         />
         Sausage</label>
@@ -291,7 +299,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="canadianBacon"
-          checked={formState.canadianBacon}
+          value={formState.canadianBacon}
           onChange={inputChange}
         />
         Canadian Bacon</label>
@@ -301,7 +309,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="spicySausage"
-          checked={formState.spicySausage}
+          value={formState.spicySausage}
           onChange={inputChange}
         />
         Spicy Italian Sausage</label>
@@ -311,7 +319,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="grilledChicken"
-          checked={formState.grilledChicken}
+          value={formState.grilledChicken}
           onChange={inputChange}
         />
         Grilled Chicken</label>
@@ -321,7 +329,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="onions"
-          checked={formState.onions}
+          value={formState.onions}
           onChange={inputChange}
         />
         Onions</label>
@@ -331,7 +339,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="greenPepper"
-          checked={formState.greenPepper}
+          value={formState.greenPepper}
           onChange={inputChange}
         />
         Green Pepper</label>
@@ -341,7 +349,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="dicedTomatos"
-          checked={formState.dicedTomatos}
+          value={formState.dicedTomatos}
           onChange={inputChange}
         />
         Diced Tomatos</label>
@@ -351,7 +359,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="blackOlives"
-          checked={formState.blackOlives}
+          value={formState.blackOlives}
           onChange={inputChange}
         />
         Black Olives</label>
@@ -361,7 +369,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="roastedGarlic"
-          checked={formState.roastedGarlic}
+          value={formState.roastedGarlic}
           onChange={inputChange}
         />
         Roasted Garlic</label>
@@ -371,7 +379,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="artichokeHearts"
-          checked={formState.artichokeHearts}
+          value={formState.artichokeHearts}
           onChange={inputChange}
         />
         Artichoke Hearts</label>
@@ -381,7 +389,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="threeCheese"
-          checked={formState.threeCheese}
+          value={formState.threeCheese}
           onChange={inputChange}
         />
         Three Cheese</label>
@@ -391,7 +399,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="pineapple"
-          checked={formState.pineapple}
+          value={formState.pineapple}
           onChange={inputChange}
         />
         Pineapple</label>
@@ -401,7 +409,7 @@ const formSchema = yup.object().shape({
           type="checkbox"
           id="terms"
           name="extraCheese"
-          checked={formState.extraCheese}
+          value={formState.extraCheese}
           onChange={inputChange}
         />
         Extra Cheese</label>
